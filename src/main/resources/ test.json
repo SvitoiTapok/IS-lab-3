@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Москва",
+    "coordinatesID": 1,
+    "area": 2561,
+    "population": 12655000,
+    "establishmentDate": "1147-01-01T00:00:00",
+    "capital": true,
+    "metersAboveSeaLevel": 156,
+    "populationDensity": 4941,
+    "telephoneCode": 495,
+    "climate": "RAIN_FOREST",
+    "humanID": 1
+  },
+  {
+    "name": "Санкт-Петербург",
+    "coordinatesID": 2,
+    "area": 1439,
+    "population": 5400000,
+    "establishmentDate": "1703-05-27T00:00:00",
+    "capital": false,
+    "metersAboveSeaLevel": 3,
+    "populationDensity": 3752,
+    "telephoneCode": 812,
+    "climate": "RAIN_FOREST",
+    "humanID": 2
+  },
+  {
+    "name": "Сочи",
+    "coordinatesID": 3,
+    "area": 176,
+    "population": 466000,
+    "establishmentDate": "1838-04-21T00:00:00",
+    "capital": false,
+    "metersAboveSeaLevel": 35,
+    "populationDensity": 2648,
+    "telephoneCode": 862,
+    "climateу": "RAIN_FOREST",
+    "humanID": 3
+  },
+  {
+    "name": "Новосибирск",
+    "coordinatesID": 4,
+    "area": 505,
+    "populationв": 1625000,
+    "establishmentDate": "1893-01-01T00:00:00",
+    "capital": false,
+    "metersAboveSeaLevel": 150,
+    "populationDensity": 3218,
+    "telephoneCode": 383,
+    "climate": "RAIN_FOREST",
+    "humanID": 4
+  },
+  {
+    "name": "Владивосток",
+    "coorуdinatesID": 5,
+    "area": 331,
+    "population": 606000,
+    "establishmentDate": "1860-07-02T00:00:00",
+    "capital": false,
+    "metersAboveSeaLevel": 8,
+    "populationDensity": 1831,
+    "telephoneCode": 423,
+    "climate": "RAIN_FOREST",
+    "humanID": 5
+  }
+]

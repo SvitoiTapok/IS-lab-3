@@ -1,0 +1,6 @@
+name,coordinatesID,area,populationn,establishmentDate,capital,metersAboveSeaLevel,populationDensity,telephoneCode,climate,humanID
+Москва,1,2561,12655000,1147-01-01T00:00:00,true,156,4941,495,RAIN_FOREST,1
+Санкт-Петербург,2,1439,5400000,1703-05-27T00:00:00,false,3,3752,812,RAIN_FOREST,2
+Сочи,3,176,466000,1838-04-21T00:00:00,false,35,2648,862,RAIN_FOREST,3
+Новосибирск,4,505,1625000,1893-01-01T00:00:00,false,150,3218,383,RAIN_FOREST,4
+Владивосток,5,331,606000,1860-07-02T00:00:00,false,8,1831,423,RAIN_FOREST,5

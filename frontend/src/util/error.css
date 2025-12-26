@@ -1,0 +1,20 @@
+.error {
+    border: 2px solid #ff4444;
+    background-color: #ffebee;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-size: 30px;
+    text-align: center;
+}
+.notification{
+    border: 2px solid green;
+    background-color: greenyellow;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-size: 30px;
+    text-align: center;
+}

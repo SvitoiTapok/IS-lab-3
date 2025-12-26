@@ -1,0 +1,15 @@
+[
+  {
+    "nameeeeeee": "Москва",
+    "coordinatesID": 1,
+    "area": 2561,
+    "populatio": 12655000,
+    "establishmentDate": "1147-01-01T00:00:00",
+    "capital": true,
+    "metersAboveSeaLevel": 156,
+    "populationDensity": 4941,
+    "telephoneCode": 495,
+    "climate": "RAIN_FOREST",
+    "humanID": 1
+  }
+]

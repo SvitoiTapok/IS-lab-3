@@ -1,0 +1,26 @@
+.vectors {
+    margin: 5px;
+    padding: 8px 12px;
+    border: 1px solid black;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.vectors:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.page {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.pagination-selector {
+    margin: 8px;
+    padding: 6px 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: white;
+}
