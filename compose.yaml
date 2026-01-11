@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:16
-    container_name: islab2-postgres
+    container_name: islab3-postgres
     environment:
       POSTGRES_DB: myapp_db
       POSTGRES_USER: myapp_user
@@ -17,27 +17,58 @@ services:
       retries: 5
     networks:
       - app-network
+  minio:
+    image: minio/minio:latest
+    container_name: islab3-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: password
+    ports:
+      - "9000:9000"  # S3 API
+      - "9001:9001"  # Web Console
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    networks:
+      - app-network
 
   backend:
     build: .
-    container_name: islab2-backend
+    container_name: islab3-backend
     ports:
       - "8080:8080"
     environment:
-      - SPRING_PROFILES_ACTIVE=docker
+
+      # Database
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/myapp_db
       - SPRING_DATASOURCE_USERNAME=myapp_user
       - SPRING_DATASOURCE_PASSWORD=myapp_password
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-    depends_on:
-      postgres:
-        condition: service_healthy
+
+      # MinIO
+      - MINIO_ENDPOINT=http://minio:9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=password
+      - MINIO_BUCKET_NAME=import-files
+
+      # Infinispan
+      - INFINISPAN_EMBEDDED=true
+#    depends_on:
+#      postgres:
+#        condition: service_healthy
+#      minio:
+#        condition: service_healthy
     networks:
       - app-network
 
   frontend:
     build: ./frontend
-    container_name: islab2-frontend
+    container_name: islab3-frontend
     ports:
       - "3000:3000"
     volumes:
@@ -64,6 +95,7 @@ services:
 
 volumes:
   postgres_data:
+  minio_data:
   pgadmin_data:
 
 networks:

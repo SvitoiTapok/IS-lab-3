@@ -10,8 +10,15 @@ plugins {
 jar {
     enabled = true
 }
-
-
+configurations.all {
+    resolutionStrategy {
+        force 'org.antlr:antlr4-runtime:4.9.2'
+        force 'org.antlr:antlr4:4.9.2'
+    }
+}
+ext {
+    set('hibernate.version', '6.0.0.Final') // ⬅️ КЛЮЧЕВАЯ СТРОКА
+}
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
@@ -22,16 +29,36 @@ java {
 }
 repositories {
     mavenCentral()
+    maven { url 'https://repository.jboss.org/nexus/content/repositories/releases/' }
+    maven { url 'https://repo.spring.io/milestone' }
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-aop'  // Добавляем AOP
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    //druid
+    implementation 'com.alibaba:druid-spring-boot-3-starter:1.2.27'
+    //L2
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation 'org.antlr:antlr4-runtime:4.9.3'
+    implementation('org.infinispan:infinispan-core:14.0.18.Final') {
+        exclude group: 'javax.transaction', module: 'javax.transaction-api'
+        exclude group: 'org.antlr', module: 'antlr4-runtime'
+    }
 
-    implementation 'io.github.resilience4j:resilience4j-spring-boot3:2.1.0'
-    implementation 'io.github.resilience4j:resilience4j-reactor:2.1.0'
+    implementation('org.infinispan:infinispan-hibernate-cache-v60:14.0.18.Final') {
+        exclude group: 'javax.transaction', module: 'javax.transaction-api'
+        exclude group: 'org.antlr', module: 'antlr4-runtime'
+    }
+
+    implementation 'javax.transaction:javax.transaction-api:1.3'
+    //Minio
+    implementation 'io.minio:minio:8.5.9'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+
 
     // PostgreSQL Driver
     runtimeOnly 'org.postgresql:postgresql'
@@ -42,13 +69,10 @@ dependencies {
     // Spring Boot DevTools (для разработки)
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-    // Spring Boot Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    // Validation (если нужна валидация)
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-    // Lombok (опционально)
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 

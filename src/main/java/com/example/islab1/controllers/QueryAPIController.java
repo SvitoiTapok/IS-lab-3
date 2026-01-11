@@ -1,7 +1,7 @@
 package com.example.islab1.controllers;
 
-import com.example.islab1.Entities.City;
-import com.example.islab1.Beans.QueryBean;
+import com.example.islab1.entities.City;
+import com.example.islab1.beans.QueryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Isolation;

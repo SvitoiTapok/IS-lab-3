@@ -1,9 +1,9 @@
 package com.example.islab1.DTO;
 
-import com.example.islab1.Entities.City;
-import com.example.islab1.Entities.Climate;
-import com.example.islab1.Entities.Coordinates;
-import com.example.islab1.Entities.Human;
+import com.example.islab1.entities.City;
+import com.example.islab1.entities.Climate;
+import com.example.islab1.entities.Coordinates;
+import com.example.islab1.entities.Human;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

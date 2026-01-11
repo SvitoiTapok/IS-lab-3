@@ -12,7 +12,7 @@ public class MyRateLimiter {
     private final Map<String, AtomicInteger> requestCounts = new ConcurrentHashMap<>();
     private final Map<String, Long> resetTimes = new ConcurrentHashMap<>();
 
-    private static final int DEFAULT_LIMIT = 100;
+    private static final int DEFAULT_LIMIT = 1000;
     private static final int TIME_WINDOW = 60 * 1000;
 
 

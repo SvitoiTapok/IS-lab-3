@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo, useState} from "react";
 import editIcon from "../imgs/edit-icon.png";
-import deleteIcon from "../imgs/delete-icon.png";
+import download from "../imgs/download.png";
 import {
     flexRender,
     getCoreRowModel,
@@ -13,6 +13,7 @@ import {useNavigate} from "react-router-dom";
 import {useError} from "../util/ErrorContext";
 import humanService from "../services/HumanService";
 import ImportService from "../services/ImportService";
+import importService from "../services/ImportService";
 
 const ImportResultStory = () => {
     const navigate = useNavigate();
@@ -65,6 +66,13 @@ const ImportResultStory = () => {
                 showError(err.toString());
             });
     }
+    const handleDownload = async (resultId) => {
+        try {
+            await importService.download(resultId)
+        }catch (err){
+            showError('Ошибка при загрузке файла: ' + err.toString())
+        }
+    }
 
 const columns = useMemo(
     () => [
@@ -91,6 +99,32 @@ const columns = useMemo(
             header: 'Дата создания',
             cell: info => info.getValue(),
             enableSorting: true,
+        },
+        {
+            accessorKey: 'originalFilename',
+            header: 'Название файла',
+            cell: info => info.getValue(),
+            enableSorting: true,
+        },
+        {
+            id: 'actions',
+            header: 'Действия',
+            cell: ({row}) => (
+                <div className="flex space-x-2">
+                    <button
+                        onClick={() => handleDownload(row.original.id)}
+                        className="delete-button"
+                        title="Удалить"
+                    >
+                        <img
+                            src={download}
+                            alt="Edit"
+                            className="action-icon"
+                        />
+                    </button>
+                </div>
+            ),
+            enableSorting: false,
         },
     ], []);
 

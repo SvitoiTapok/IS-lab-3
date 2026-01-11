@@ -78,9 +78,9 @@ const MainTable = () => {
     useEffect(() => {
         console.log("UF" + pagination.pageIndex)
         callServer()
-        const intervalId = setInterval(callServer, 5000)
+        // const intervalId = setInterval(callServer, 5000)
 
-        return () => clearInterval(intervalId);
+        //return () => clearInterval(intervalId);
     }, [pagination.pageIndex, pagination.pageSize, sorting, nameFilter, climateFilter, humanFilter]);
 
     const handleDelete = async (cityId) => {

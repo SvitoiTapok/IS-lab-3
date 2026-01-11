@@ -1,8 +1,10 @@
-package com.example.islab1.Entities;
+package com.example.islab1.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Getter
@@ -11,6 +13,8 @@ import org.hibernate.annotations.CreationTimestamp;
 @AllArgsConstructor
 @ToString
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class ImportResult {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,5 +30,11 @@ public class ImportResult {
     @CreationTimestamp
     @Column(name = "creationDate", updatable = false, nullable = false)
     private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    @JsonIgnore
+    @Column(name = "stored_filename")
+    private String storedFilename;
+
+    @Column(name = "original_filename")
+    private String originalFilename;
 
 }

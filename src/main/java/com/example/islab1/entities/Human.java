@@ -1,4 +1,4 @@
-package com.example.islab1.Entities;
+package com.example.islab1.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "human")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Human {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

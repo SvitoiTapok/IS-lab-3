@@ -1,7 +1,7 @@
-package com.example.islab1.Beans;
+package com.example.islab1.beans;
 
 import com.example.islab1.DBApi.CitiesRepository;
-import com.example.islab1.Entities.City;
+import com.example.islab1.entities.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

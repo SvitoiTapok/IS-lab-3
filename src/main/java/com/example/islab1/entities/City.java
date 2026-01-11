@@ -1,8 +1,9 @@
-package com.example.islab1.Entities;
+package com.example.islab1.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Getter
@@ -12,6 +13,8 @@ import org.hibernate.annotations.CreationTimestamp;
 @ToString
 @Entity
 @Table(name = "cities")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
