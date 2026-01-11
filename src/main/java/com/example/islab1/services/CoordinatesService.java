@@ -70,16 +70,4 @@ public class CoordinatesService {
         return cityRepository.findByCoordinates(coordinates);
     }
 
-    public Coordinates getCoordinatesById(Integer id) {
-        return coordinatesRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Не найдены координаты с id: " + id));
-    }
-
-    public boolean coordinatesExist(Integer id) {
-        return coordinatesRepository.existsById(id);
-    }
-
-    public List<Coordinates> getAllCoordinates() {
-        return coordinatesRepository.findAll();
-    }
 }

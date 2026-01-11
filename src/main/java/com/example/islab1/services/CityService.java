@@ -146,17 +146,4 @@ public class CityService {
             existingCity.setHuman(updatedCity.getHuman());
         }
     }
-
-    public City getCityById(Long id) {
-        return citiesRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Не найден город с id: " + id));
-    }
-
-    public boolean cityExists(Long id) {
-        return citiesRepository.existsById(id);
-    }
-
-    public List<City> getAllCities() {
-        return citiesRepository.findAll();
-    }
 }
